@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student List with Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input[type="text"] {
+      width: 300px;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student List</h2>
+
+  <input type="text" id="searchInput" placeholder="Search by name, roll or mobile..." onkeyup="searchTable()">
+
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Ahmed Hossain</td><td>101</td><td>01710000001</td><td><img src ="c.png" width="30" height="20"></td></tr>
+      <tr><td>Sadia Islam</td><td>102</td><td>01710000002</td></tr>
+      <tr><td>Rafiul Karim</td><td>103</td><td>01710000003</td></tr>
+      <tr><td>Jannatul Nayeem</td><td>104</td><td>01710000004</td></tr>
+      <tr><td>Tanvir Ahmed</td><td>105</td><td>01710000005</td></tr>
+      <tr><td>Nasima Akter</td><td>106</td><td>01710000006</td></tr>
+      <tr><td>Fahim Reza</td><td>107</td><td>01710000007</td></tr>
+      <tr><td>Mehjabin Rahman</td><td>108</td><td>01710000008</td></tr>
+      <tr><td>Imran Hossain</td><td>109</td><td>01710000009</td></tr>
+      <tr><td>Lubna Chowdhury</td><td>110</td><td>01710000010</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    function searchTable() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const table = document.getElementById("studentTable");
+      const tr = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < tr.length; i++) {
+        const td = tr[i].getElementsByTagName("td");
+        let rowText = "";
+        for (let j = 0; j < td.length; j++) {
+          rowText += td[j].textContent.toLowerCase() + " ";
+        }
+        tr[i].style.display = rowText.includes(input) ? "" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
